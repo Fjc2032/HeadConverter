@@ -1,0 +1,8 @@
+name: HeadConverter
+version: '0.1-b'
+main: dev.Fjc.headConverter.HeadConverter
+api-version: '1.21'
+prefix: HeadConverter
+load: STARTUP
+authors: [ Fjc ]
+description: With pets being gone, this plugin will convert old pets into intangible currency.
