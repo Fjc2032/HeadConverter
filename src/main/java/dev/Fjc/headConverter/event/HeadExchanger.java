@@ -16,6 +16,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -80,6 +81,11 @@ public class HeadExchanger implements Listener {
 
     }
 
+    /**
+     * Gets the level from the given text
+     * @param text The text
+     * @return The level, or null if not found
+     */
     private @Nullable Integer getLevel(String text) {
         text = ChatColor.stripColor(text);
 
@@ -92,6 +98,12 @@ public class HeadExchanger implements Listener {
         return null;
     }
 
+    /**
+     * If the level from the display name is null, try checking each lore line of the item
+     * @param lore The lore of the item
+     * @return The level, or null if not available
+     */
+    @ApiStatus.Experimental
     private @Nullable Integer getLevelFromLore(List<Component> lore) {
         for (Component component : lore) {
             String initial = PlainTextComponentSerializer.plainText().serialize(component);
@@ -106,6 +118,12 @@ public class HeadExchanger implements Listener {
 
     //Syntax is silver give <player> <amount>
     //Amount accepts any double
+
+    /**
+     * Sends the command that will give the currency
+     * @param player The player to send the money to
+     * @param amount The amount to be processed. Typically, this would be the pet level.
+     */
     private void dispatchCommand(Player player, int amount) {
         int total = Math.max((int) (amount * 0.075), 1);
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "silver give " + player.getName() + " " + total);
