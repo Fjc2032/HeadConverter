@@ -6,7 +6,7 @@
 
     <groupId>dev.Fjc</groupId>
     <artifactId>HeadConverter</artifactId>
-    <version>0.1-b</version>
+    <version>0.2.5-b</version>
     <packaging>jar</packaging>
 
     <name>HeadConverter</name>
